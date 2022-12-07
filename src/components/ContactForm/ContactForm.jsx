@@ -1,4 +1,5 @@
-import { addContact } from 'redux/contactsSlice';
+// import { addContact } from 'redux/contactsSlice';
+import { addContact } from 'redux/operations';
 
 import { useState } from 'react';
 import { nanoid } from '@reduxjs/toolkit';
