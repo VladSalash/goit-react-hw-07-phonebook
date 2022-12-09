@@ -1,45 +1,46 @@
-// import { addContact } from 'redux/contactsSlice';
-import { addContact } from 'redux/operations';
+import { useState, useMemo } from 'react';
 
-import { useState } from 'react';
-import { nanoid } from '@reduxjs/toolkit';
-
-import { useSelector, useDispatch } from 'react-redux';
+import {
+  useFetchContactsQuery,
+  useAddContactMutation,
+} from 'redux/contactsAPI';
 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import Loader from '../Loader/Loader';
 import { Wrapper, Input, Label, Span, Button } from './ContactForm.styled';
 
 function ContactForm() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  const contacts = useSelector(state => state.contact.contacts);
-  const dispatch = useDispatch();
-  const matchContact = contacts.find(contact => contact.name === name);
-
   const onNameChange = event => setName(event.target.value);
   const onNumberChange = event => setNumber(event.target.value);
 
-  const handleSubmit = event => {
+  const { data: contacts } = useFetchContactsQuery();
+  const [addContact, { isLoading }] = useAddContactMutation();
+
+  const alreadyInContacts = useMemo(() => {
+    return contacts?.find(contact => contact.name === name);
+  }, [name, contacts]);
+
+  const handleSubmit = async event => {
     event.preventDefault();
-
-    if (matchContact) {
-      return toast.warn(`${name} is already in contacts`);
-    }
-
-    dispatch(
-      addContact({
-        id: nanoid(),
-        name,
-        number,
-      })
-    );
 
     reset();
 
-    return toast.success(`${name} added in your phonebook 📱`);
+    try {
+      if (alreadyInContacts) {
+        return toast.warn(`${name} is already in 📱`);
+      } else {
+        await addContact({ name, number });
+        return toast.success(`${name} added in your 📱`);
+      }
+    } catch (error) {
+      console.log(error);
+      return toast.error('Ooops..., something went wrong, try again later');
+    }
   };
 
   const reset = () => {
@@ -74,7 +75,7 @@ function ContactForm() {
         />
       </Label>
 
-      <Button type="submit"> Add contact </Button>
+      <Button type="submit"> {isLoading ? <Loader /> : 'Add contact'} </Button>
     </Wrapper>
   );
 }
