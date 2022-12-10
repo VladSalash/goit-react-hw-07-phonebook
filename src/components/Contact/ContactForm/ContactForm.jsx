@@ -1,9 +1,6 @@
 import { useState, useMemo } from 'react';
 
-import {
-  useFetchContactsQuery,
-  useAddContactMutation,
-} from 'redux/contactsAPI';
+import { useGetContactsQuery, useAddContactMutation } from 'redux/contactsAPI';
 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -18,7 +15,7 @@ function ContactForm() {
   const onNameChange = event => setName(event.target.value);
   const onNumberChange = event => setNumber(event.target.value);
 
-  const { data: contacts } = useFetchContactsQuery();
+  const { data: contacts } = useGetContactsQuery();
   const [addContact, { isLoading }] = useAddContactMutation();
 
   const alreadyInContacts = useMemo(() => {

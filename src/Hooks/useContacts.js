@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 import { selectFilter } from 'redux/selectors';
 
-import { useFetchContactsQuery } from 'redux/contactsAPI';
+import { useGetContactsQuery } from 'redux/contactsAPI';
 
 import { createSelector } from '@reduxjs/toolkit';
 
@@ -23,7 +23,7 @@ const useContacts = () => {
     );
   }, []);
 
-  return useFetchContactsQuery(undefined, {
+  return useGetContactsQuery(undefined, {
     selectFromResult(result) {
       return {
         ...result,

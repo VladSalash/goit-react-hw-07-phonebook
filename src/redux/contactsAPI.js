@@ -1,4 +1,4 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const contactApi = createApi({
   reducerPath: 'contactApi',
@@ -7,7 +7,7 @@ export const contactApi = createApi({
   }),
   tagTypes: ['Contact'],
   endpoints: builder => ({
-    fetchContacts: builder.query({
+    getContacts: builder.query({
       query: () => '/contacts',
       providesTags: ['Contact'],
     }),
@@ -33,7 +33,7 @@ export const contactApi = createApi({
 });
 
 export const {
-  useFetchContactsQuery,
+  useGetContactsQuery,
   useDeleteContactMutation,
   useAddContactMutation,
 } = contactApi;
