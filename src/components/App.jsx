@@ -1,14 +1,16 @@
 import ContactForm from './Contact/ContactForm/ContactForm';
 import ContactList from './Contact/ContactList/ContactList';
 
+import { Container } from '../contactApp.styled';
+
 const App = () => {
   return (
-    <div>
+    <Container>
       <h1>Phonebook</h1>
       <ContactForm />
       <h2>Contacts</h2>
       <ContactList />
-    </div>
+    </Container>
   );
 };
 

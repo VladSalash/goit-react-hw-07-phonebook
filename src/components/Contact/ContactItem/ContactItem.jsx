@@ -5,12 +5,10 @@ import useVisibleItem from 'Hooks/useVisibleItem';
 
 import { motion, AnimatePresence } from 'framer-motion';
 import settingsAnimation from './settingsAnimation';
-
-import Loader from '../Loader/Loader';
 import { Button } from './ContactItem.styled';
 
 const ContactItem = ({ id, name, number }) => {
-  const [deleteContact, { isLoading: isDeleting }] = useDeleteContactMutation();
+  const [deleteContact] = useDeleteContactMutation();
   const [isVisible, handleVisible] = useVisibleItem();
 
   return (
@@ -26,12 +24,8 @@ const ContactItem = ({ id, name, number }) => {
             key={id}
           >
             <b>{name}</b>: {number}
-            <Button
-              type="button"
-              onClick={() => deleteContact(id)}
-              disabled={isDeleting}
-            >
-              {isDeleting && <Loader size={12} />}
+            <Button type="button" onClick={() => deleteContact(id)}>
+              Delete
             </Button>
           </motion.li>
         )}
