@@ -29,9 +29,9 @@ const ContactItem = ({ id, name, number }) => {
             <Button
               type="button"
               onClick={() => deleteContact(id)}
-              // disabled={isDeleting}
+              disabled={isDeleting}
             >
-              {/* {isDeleting && <Loader size={12} />} */}
+              {isDeleting && <Loader size={12} />}
             </Button>
           </motion.li>
         )}
