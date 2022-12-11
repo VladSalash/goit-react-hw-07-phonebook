@@ -1,7 +1,7 @@
 import { useDeleteContactMutation } from 'redux/services/contactsAPI';
 import PropTypes from 'prop-types';
 
-import useVisibleItem from 'hooks/useVisibleItem';
+import useVisibleItem from 'components/hooks/useVisibleItem';
 
 import { motion, AnimatePresence } from 'framer-motion';
 import settingsAnimation from './helpers/settingsAnimation';
