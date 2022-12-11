@@ -1,6 +1,9 @@
 import { useState, useMemo } from 'react';
 
-import { useGetContactsQuery, useAddContactMutation } from 'redux/contactsAPI';
+import {
+  useGetContactsQuery,
+  useAddContactMutation,
+} from 'redux/services/contactsAPI';
 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';

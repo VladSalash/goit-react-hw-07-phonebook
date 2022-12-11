@@ -1,8 +1,8 @@
 import { setupListeners } from '@reduxjs/toolkit/dist/query';
 
-import { contactApi } from './contactsAPI';
+import { contactApi } from './services/contactsAPI';
 
-import { filterSlice } from './filterSlice';
+import { filterSlice } from './slices/filterSlice';
 
 import { configureStore } from '@reduxjs/toolkit';
 

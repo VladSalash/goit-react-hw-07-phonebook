@@ -1,10 +1,10 @@
-import { useDeleteContactMutation } from 'redux/contactsAPI';
+import { useDeleteContactMutation } from 'redux/services/contactsAPI';
 import PropTypes from 'prop-types';
 
-import useVisibleItem from 'Hooks/useVisibleItem';
+import useVisibleItem from 'hooks/useVisibleItem';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import settingsAnimation from './settingsAnimation';
+import settingsAnimation from './helpers/settingsAnimation';
 import { Button } from './ContactItem.styled';
 
 const ContactItem = ({ id, name, number }) => {
@@ -12,25 +12,23 @@ const ContactItem = ({ id, name, number }) => {
   const [isVisible, handleVisible] = useVisibleItem();
 
   return (
-    <>
-      <AnimatePresence>
-        {isVisible && (
-          <motion.li
-            variants={settingsAnimation}
-            initial="hidden"
-            animate="visible"
-            exit="hidden"
-            onClick={handleVisible}
-            key={id}
-          >
-            <b>{name}</b>: {number}
-            <Button type="button" onClick={() => deleteContact(id)}>
-              Delete
-            </Button>
-          </motion.li>
-        )}
-      </AnimatePresence>
-    </>
+    <AnimatePresence>
+      {isVisible && (
+        <motion.li
+          variants={settingsAnimation}
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
+          onClick={handleVisible}
+          key={id}
+        >
+          <b>{name}</b>: {number}
+          <Button type="button" onClick={() => deleteContact(id)}>
+            Delete
+          </Button>
+        </motion.li>
+      )}
+    </AnimatePresence>
   );
 };
 

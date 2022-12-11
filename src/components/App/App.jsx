@@ -1,7 +1,7 @@
-import ContactForm from './Contact/ContactForm/ContactForm';
-import ContactList from './Contact/ContactList/ContactList';
+import ContactForm from '../Contact/ContactForm/ContactForm';
+import ContactList from '../Contact/ContactList/ContactList';
 
-import { Container } from '../contactApp.styled';
+import { Container } from './ContactApp.styled';
 
 const App = () => {
   return (

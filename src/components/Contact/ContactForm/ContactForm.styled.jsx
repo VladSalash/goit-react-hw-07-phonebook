@@ -18,7 +18,6 @@ export const Input = styled.input`
   border-radius: 5000px;
   backdrop-filter: blur(5px);
   box-shadow: 4px 4px 60px rgba(0, 0, 0, 0.2);
-  color: #fff;
   font-family: Montserrat, sans-serif;
   font-weight: 500;
   transition: all 0.2s ease-in-out;

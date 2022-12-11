@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import useContacts from 'Hooks/useContacts';
+import useContacts from 'hooks/useContacts';
 
 import Filter from '../Filter';
 import ContactItem from '../ContactItem/ContactItem';

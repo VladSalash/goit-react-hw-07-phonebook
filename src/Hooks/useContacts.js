@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 import { selectFilter } from 'redux/selectors';
 
-import { useGetContactsQuery } from 'redux/contactsAPI';
+import { useGetContactsQuery } from 'redux/services/contactsAPI';
 
 import { createSelector } from '@reduxjs/toolkit';
 
